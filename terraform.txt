@@ -1,0 +1,44 @@
+2022-04-05T13:28:05.610+0400 [INFO]  Terraform version: 1.1.2
+2022-04-05T13:28:05.611+0400 [INFO]  Go runtime version: go1.17.2
+2022-04-05T13:28:05.611+0400 [INFO]  CLI args: []string{"terraform", "init"}
+2022-04-05T13:28:05.612+0400 [DEBUG] Attempting to open CLI config file: /home/tigimroot/.terraformrc
+2022-04-05T13:28:05.612+0400 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2022-04-05T13:28:05.618+0400 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2022-04-05T13:28:05.619+0400 [DEBUG] ignoring non-existing provider search directory /home/tigimroot/.terraform.d/plugins
+2022-04-05T13:28:05.620+0400 [DEBUG] ignoring non-existing provider search directory /home/tigimroot/.local/share/terraform/plugins
+2022-04-05T13:28:05.624+0400 [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2022-04-05T13:28:05.625+0400 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2022-04-05T13:28:05.631+0400 [DEBUG] ignoring non-existing provider search directory /var/lib/snapd/desktop/terraform/plugins
+2022-04-05T13:28:05.637+0400 [INFO]  CLI command args: []string{"init"}
+2022-04-05T13:28:05.694+0400 [DEBUG] Module installer: begin bastion
+2022-04-05T13:28:05.733+0400 [DEBUG] Module installer: bastion installed at modules/bastion
+2022-04-05T13:28:05.734+0400 [DEBUG] Module installer: begin loadb
+2022-04-05T13:28:05.793+0400 [DEBUG] Module installer: loadb installed at modules/loadb
+2022-04-05T13:28:05.795+0400 [DEBUG] Module installer: begin myvpc
+2022-04-05T13:28:05.849+0400 [DEBUG] Module installer: myvpc installed at modules/myvpc
+2022-04-05T13:28:05.850+0400 [DEBUG] Module installer: begin r53_cert
+2022-04-05T13:28:05.899+0400 [DEBUG] Module installer: r53_cert installed at modules/r53_cert
+2022-04-05T13:28:05.936+0400 [DEBUG] New state was assigned lineage "4fd6ecb8-56b9-675c-f483-b8674e384951"
+2022-04-05T13:28:05.936+0400 [DEBUG] checking for provisioner in "."
+2022-04-05T13:28:06.983+0400 [DEBUG] checking for provisioner in "/usr/bin"
+2022-04-05T13:28:06.986+0400 [DEBUG] command: asking for input: "bucket"
+2022-04-05T13:42:56.661+0400 [INFO]  Terraform version: 1.1.2
+2022-04-05T13:42:56.662+0400 [INFO]  Go runtime version: go1.17.2
+2022-04-05T13:42:56.662+0400 [INFO]  CLI args: []string{"terraform", "init", "-var-file=dev.tfvars"}
+2022-04-05T13:42:56.662+0400 [DEBUG] Attempting to open CLI config file: /home/tigimroot/.terraformrc
+2022-04-05T13:42:56.662+0400 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2022-04-05T13:42:56.664+0400 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2022-04-05T13:42:56.664+0400 [DEBUG] ignoring non-existing provider search directory /home/tigimroot/.terraform.d/plugins
+2022-04-05T13:42:56.664+0400 [DEBUG] ignoring non-existing provider search directory /home/tigimroot/.local/share/terraform/plugins
+2022-04-05T13:42:56.664+0400 [DEBUG] ignoring non-existing provider search directory /usr/local/share/terraform/plugins
+2022-04-05T13:42:56.664+0400 [DEBUG] ignoring non-existing provider search directory /usr/share/terraform/plugins
+2022-04-05T13:42:56.665+0400 [DEBUG] ignoring non-existing provider search directory /var/lib/snapd/desktop/terraform/plugins
+2022-04-05T13:42:56.666+0400 [INFO]  CLI command args: []string{"init", "-var-file=dev.tfvars"}
+2022-04-05T13:42:56.694+0400 [DEBUG] Module installer: begin bastion
+2022-04-05T13:42:56.702+0400 [DEBUG] Module installer: begin loadb
+2022-04-05T13:42:56.707+0400 [DEBUG] Module installer: begin myvpc
+2022-04-05T13:42:56.714+0400 [DEBUG] Module installer: begin r53_cert
+2022-04-05T13:42:56.752+0400 [DEBUG] New state was assigned lineage "1b5244ae-6a66-d83d-3dee-d726b3b5d740"
+2022-04-05T13:42:56.754+0400 [DEBUG] checking for provisioner in "."
+2022-04-05T13:42:56.804+0400 [DEBUG] checking for provisioner in "/usr/bin"
+2022-04-05T13:42:56.813+0400 [DEBUG] command: asking for input: "bucket"

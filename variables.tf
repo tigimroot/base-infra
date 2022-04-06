@@ -17,6 +17,11 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "mypage-tags" {
+  description = "TAGS for AWS Resources"
+  type = map(string)
+}
+
 variable "azcount" {
   description = "Count of Availability Zones"
   default = "2"
@@ -32,14 +37,9 @@ variable "asg_max_size" {
   default = "3"
 }
 
-variable "key" {
-  }
 
-variable "bucket" {
-}
-
-variable "octarine-domain" {
-  default = "a1.nubes.academy"
+variable "mypage-domain" {
+  default = "kulikov.work"
 }
 
 variable "ssh_ip" {

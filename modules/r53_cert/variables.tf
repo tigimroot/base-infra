@@ -1,3 +1,3 @@
-variable "octarine-domain" {
-  description = "octarine domain for all service infrastructure"
+variable "domain" {
+  description = "domain for all service infrastructure"
 }

@@ -1,5 +1,5 @@
 resource "aws_security_group" "bastion_ssh" {
-  name = "octatine-bastion-ssh"
+  name = "mypage-bastion-ssh"
   vpc_id = var.vpc_id
 
   ingress {
@@ -17,34 +17,33 @@ resource "aws_security_group" "bastion_ssh" {
     ]
   }
 
-  tags = {
-    "Env":"Prod"
-  }
+  tags = merge(tomap(
+  {Name = "bastion_SG"}),
+    var.mypage-tags,
+)
 }
-
-  resource "aws_key_pair" "bastion" {
-    key_name = "octarine-bastion"
-    public_key = file("${path.root}/modules/sshpub/oc7.pub")
-  }
 
   resource "aws_instance" "bastion" {
     ami = var.ami
     instance_type = var.instance_type
     subnet_id = element(var.subnets, 0)
-    key_name = "octarine-bastion"
+    key_name = var.sshkey
     vpc_security_group_ids = [aws_security_group.bastion_ssh.id]
     associate_public_ip_address = true
 
-    tags = {
-      "Env":"Prod"
-    }
-  }
+    tags = merge(tomap({
+      Name = "bastion_EC2"}
+      ),
+      var.mypage-tags,
+  )
+}
 
   resource "aws_eip" "bastion" {
     instance = aws_instance.bastion.id
     vpc = true
 
-    tags = {
-      "Env":"Prod"
-    }
+    tags = merge(tomap(
+    {Name = "bastion_eip"}),
+      var.mypage-tags,
+  )
 }

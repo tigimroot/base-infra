@@ -1,6 +1,6 @@
 
-resource "aws_security_group" "octarine_lb_sg" {
-  name = "OC-7_lb_secirity_group"
+resource "aws_security_group" "kw_lb_sg" {
+  name = "mypage_lb_secirity_group"
   vpc_id = var.vpc_id
 
   ingress{
@@ -24,21 +24,23 @@ resource "aws_security_group" "octarine_lb_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags = {
-    "Env":"Prod"
-  }
+  tags = merge(tomap(
+  {Name = "mypage_lb_secirity_group"}),
+    var.mypage-tags
+)
 }
 
 resource "aws_lb" "alb" {
   subnets             = var.subnets
-  security_groups     = [aws_security_group.octarine_lb_sg.id]
+  security_groups     = [aws_security_group.kw_lb_sg.id]
   internal            = false
   load_balancer_type          = "application"
   ip_address_type             = "ipv4"
 
-  tags = {
-    "Env":"Prod"
-  }
+  tags = merge(tomap(
+  {Name = "mypage_alb"}),
+    var.mypage-tags
+)
 }
 
 resource "aws_lb_target_group" "alb_tg" {
@@ -61,9 +63,10 @@ resource "aws_lb_target_group" "alb_tg" {
    create_before_destroy = true
  }
 
- tags = {
-   "Env":"Prod"
- }
+ tags = merge(tomap(
+ {Name = "mypage_alb_tg"}),
+   var.mypage-tags
+)
 }
 
 resource "aws_lb_listener" "http" {
@@ -82,9 +85,10 @@ resource "aws_lb_listener" "http" {
     }
   }
 
-  tags = {
-    "Env":"Prod"
-  }
+  tags = merge(tomap(
+  {Name = "mypage_http_listener"}),
+    var.mypage-tags
+)
 }
 
 resource "aws_lb_listener" "https" {
@@ -99,9 +103,10 @@ resource "aws_lb_listener" "https" {
     target_group_arn = aws_lb_target_group.alb_tg.arn
     }
 
-    tags = {
-      "Env":"Prod"
-    }
+    tags = merge(tomap(
+    {Name = "mypage_https_listener"}),
+      var.mypage-tags
+  )
 
 
 depends_on = [aws_lb_target_group.alb_tg]

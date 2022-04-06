@@ -9,5 +9,5 @@ output "alb_tg_arn" {
 
 output "alb_sg"{
   description = "security group id"
-  value = aws_security_group.octarine_lb_sg.id
+  value = aws_security_group.kw_lb_sg.id
 }

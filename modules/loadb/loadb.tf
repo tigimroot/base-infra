@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "kw_lb_sg" {
-  name = "mypage_lb_secirity_group"
+  name = "kw_lb_secirity_group"
   vpc_id = var.vpc_id
 
   ingress{
@@ -25,7 +25,7 @@ resource "aws_security_group" "kw_lb_sg" {
   }
 
   tags = merge(tomap(
-  {Name = "mypage_lb_secirity_group"}),
+  {Name = "kw_lb_secirity_group"}),
     var.mypage-tags
 )
 }

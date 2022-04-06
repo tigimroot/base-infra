@@ -1,5 +1,5 @@
 resource "aws_security_group" "kw_asg_sg" {
-  name = "OC-7_asg_secirity_group"
+  name = "kw_asg_secirity_group"
   vpc_id = var.vpc_id
 
   ingress{
@@ -34,12 +34,12 @@ resource "aws_security_group" "kw_asg_sg" {
   tags = merge(tomap({
     Name = "kw_asg_sg"}
     ),
-    var.mypage-tags,
+    var.mypage-tags
 )
 }
 
 resource "aws_launch_configuration" "mypage" {
-name_prefix   = "OC-7-"
+name_prefix   = "kw-"
 image_id               = var.ami
 instance_type          = var.instance_type
 associate_public_ip_address = true

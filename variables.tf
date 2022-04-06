@@ -38,7 +38,7 @@ variable "asg_max_size" {
 }
 
 
-variable "mypage-domain" {
+variable "domain" {
   default = "kulikov.work"
 }
 

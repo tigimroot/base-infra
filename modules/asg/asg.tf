@@ -1,5 +1,5 @@
-resource "aws_security_group" "octarine_asg_sg" {
-  name = "OC-7_asg_secirity_group"
+resource "aws_security_group" "kw_asg_sg" {
+  name = "kw_asg_secirity_group"
   vpc_id = var.vpc_id
 
   ingress{
@@ -31,17 +31,19 @@ resource "aws_security_group" "octarine_asg_sg" {
   }
 
 
-  tags = {
-    "Env":"Prod"
-  }
+  tags = merge(tomap({
+    Name = "kw_asg_sg"}
+    ),
+    var.mypage-tags
+)
 }
 
-resource "aws_launch_configuration" "octarine" {
-name_prefix   = "OC-7-"
+resource "aws_launch_configuration" "mypage" {
+name_prefix   = "kw-"
 image_id               = var.ami
 instance_type          = var.instance_type
 associate_public_ip_address = true
-security_groups = [aws_security_group.octarine_asg_sg.id]
+security_groups = [aws_security_group.kw_asg_sg.id]
 key_name = var.sshkey
 user_data = filebase64("${path.module}/userdata.sh")
 
@@ -50,14 +52,14 @@ lifecycle {
    }
 }
 
-resource "aws_autoscaling_group" "octarine" {
+resource "aws_autoscaling_group" "mypage" {
   #availability_zones = var.availability_zones
   vpc_zone_identifier = var.subnets
   max_size = var.asg_max_size
   min_size = var.asg_min_size
   desired_capacity =  var.asg_min_size
   target_group_arns = [var.alb_tg_arn]
-  launch_configuration = aws_launch_configuration.octarine.name
+  launch_configuration = aws_launch_configuration.mypage.name
   health_check_type = "ELB"
 
   lifecycle {

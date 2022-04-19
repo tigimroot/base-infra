@@ -36,3 +36,8 @@ variable "alb_sg" {
 
 variable "cidr_block" {
       }
+
+variable "mypage-tags" {
+    description = "TAGS for AWS Resources"
+    type = map(string)
+    }

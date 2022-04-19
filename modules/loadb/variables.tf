@@ -9,3 +9,8 @@ variable "vpc_id" {
 
 variable "certificate_arn" {
 }
+
+variable "mypage-tags" {
+    description = "TAGS for AWS Resources"
+    type = map(string)
+  }

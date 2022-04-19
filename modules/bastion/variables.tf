@@ -18,3 +18,8 @@ variable "instance_type" {
 
 variable "sshkey" {
   }
+
+variable "mypage-tags" {
+    description = "TAGS for AWS Resources"
+    type = map(string)
+  }

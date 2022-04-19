@@ -1,10 +1,10 @@
 resource "aws_vpc" "myvpc"{
   cidr_block  = "10.0.0.0/16"
-  tags  = {
-    "Env":"Prod"
-    "Name":"OC-7-octarine-vpc"
-    "Region":"${var.region}"
-  }
+
+  tags = merge(tomap(
+  {Name = "mypage_vpc"}),
+    var.mypage-tags
+)
 }
 
 data "aws_availability_zones" "available"{
@@ -17,10 +17,11 @@ resource "aws_subnet" "public_subnet" {
   cidr_block  = "10.0.${count.index}.0/24"
   availability_zone = "${element(data.aws_availability_zones.available.names, count.index)}"
 
-  tags = {
-    "Name":"public_subnet_${element(data.aws_availability_zones.available.names, count.index)}"
-    "Env":"Prod"
-  }
+
+  tags = merge(tomap({
+    Name = "public_subnet_${element(data.aws_availability_zones.available.names, count.index)}"}),
+    var.mypage-tags
+)
 }
 
 resource "aws_subnet" "private_subnet" {
@@ -29,18 +30,19 @@ resource "aws_subnet" "private_subnet" {
   cidr_block = "10.0.10${count.index}.0/24"
   availability_zone = "${element(data.aws_availability_zones.available.names, count.index)}"
 
-  tags = {
-    "Name":"private_subnet_${element(data.aws_availability_zones.available.names, count.index)}"
-    "Env":"Prod"
-  }
+  tags = merge(tomap({
+    Name = "private_subnet_${element(data.aws_availability_zones.available.names, count.index)}"}),
+    var.mypage-tags
+)
 }
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.myvpc.id
 
-  tags = {
-    "Env":"Prod"
-  }
+  tags = merge(tomap(
+  {Name = "mypage_igw"}),
+    var.mypage-tags
+)
 }
 
 resource "aws_route_table" "r_t_public" {
@@ -49,10 +51,12 @@ resource "aws_route_table" "r_t_public" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.igw.id
   }
-  tags = {
-    "Name":"OC-7_route_table_${aws_vpc.myvpc.id}"
-    "Env":"Prod"
-  }
+
+
+  tags = merge(tomap(
+  {Name = "mypage_route_table"}),
+    var.mypage-tags,
+)
 }
 
 resource "aws_route_table_association" "public_subnet_rt_as" {

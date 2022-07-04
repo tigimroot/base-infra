@@ -29,12 +29,12 @@ variable "azcount" {
 
 variable "asg_min_size" {
   description = "Min instance count for ASG"
-  default = "1"
+  default = "2"
 }
 
 variable "asg_max_size" {
   description = "Max instance count for ASG"
-  default = "2"
+  default = "3"
 }
 
 

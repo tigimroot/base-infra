@@ -42,7 +42,7 @@ resource "aws_launch_configuration" "mypage" {
 name_prefix   = "kw-"
 image_id               = var.ami
 instance_type          = var.instance_type
-associate_public_ip_address = false
+associate_public_ip_address = true
 security_groups = [aws_security_group.kw_asg_sg.id]
 key_name = var.sshkey
 user_data = filebase64("${path.module}/userdata.sh")

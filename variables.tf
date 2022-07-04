@@ -29,12 +29,12 @@ variable "azcount" {
 
 variable "asg_min_size" {
   description = "Min instance count for ASG"
-  default = "2"
+  default = "1"
 }
 
 variable "asg_max_size" {
   description = "Max instance count for ASG"
-  default = "3"
+  default = "2"
 }
 
 
@@ -44,5 +44,5 @@ variable "domain" {
 
 variable "ssh_ip" {
   description = "admin ip adresses"
-  default = ["46.138.222.51/32"]
+  default = ["37.232.51.35/32"]
 }
